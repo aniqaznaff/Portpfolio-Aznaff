@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <h1>My Portfolio</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portofolio">Portofolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="profile-pic">
+                <img src="./IMG/profil.jpeg" alt="John Doe">
+            </div>
+            <h1>Aniq 'Azza Nafisah</h1>
+            <p>UI/UX And Web Development</p>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p>Halo! Saya Aniq ‘Azza Nafisah, mahasiswa Sistem Informasi di Universitas Persada Indonesai YAI yang saat ini juga mengikuti program Studi Independen dengan fokus pada Web Development & UI/UX. Selama kuliah, saya telah mempelajari berbagai aspek teknologi informasi, seperti Analisis Sistem, Manajemen Basis Data, dan Praktikum Web Programming. Melalui program studi independen, saya mendapatkan kesempatan untuk menerapkan pengetahuan tersebut dalam proyek nyata, memperdalam pemahaman saya tentang web Development & UI/UX, serta mengembangkan keterampilan menggunakan tools seperti Figma, Canva, Visual Studio Code, dan lain sebagainya. Saya sangat tertarik dengan bagaimana teknologi dapat digunakan untuk meningkatkan efisiensi bisnis dan menyelesaikan masalah kompleks. Saya selalu terbuka untuk kesempatan belajar baru, kolaborasi, atau magang yang dapat memperluas wawasan dan keterampilan saya.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills">
+                <div class="skill">
+                    <img src="./IMG/canva.jpeg" alt="HTML5">
+                    <h3>Canva</h3>
+                </div>
+                <div class="skill">
+                    <img src="./IMG/figma.png" alt="CSS3">
+                    <h3>Figma</h3>
+                </div>
+                <div class="skill">
+                    <img src="./IMG/visual.jpeg" alt="JavaScript">
+                    <h3>Visual Studio Code</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portofolio">
+        <div class="container">
+            <h2 class="section-title">Portofolio</h2>
+            <div class="gallery">
+                <!-- Gambar 1 -->
+                <a href="proyek1.html" target="_blank">
+                    <h2><p>Proyek 1: Layout Website</p></h2>
+                </a>
+        
+                <!-- Gambar 2 -->
+                <a href="proyek2.html" target="_blank">
+                    <h2><p>Proyek 2: Layout Landing Page</p></h2>
+                </a>
+
+                <!-- Gambar 3 -->
+                <a href="https://www.figma.com/proto/LzHCbWEXNKtv0kK56pjDn4/Untitled?node-id=0-1&t=jZz0H6Q2bMqi4fGh-1" target="_blank">
+                    <h2><p>Proyek 3: Figma </p></h2>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="skills">
+                <div class="skill">
+                    <img src="./IMG/gmail.jpeg" alt="HTML5">
+                    <h6>aniqazzanafisahn@gmail.com</h6>
+                </div>
+                <div class="skill">
+                    <img src="./IMG/ig (1).jpeg" alt="CSS3">
+                    <h5>@aniq_aznaf</h5>
+                </div>
+                <div class="skill">
+                    <img src="./IMG/linkedin.jpeg" alt="JavaScript">
+                    <h5>Visual Studio Code</h5>
+                </div>
+                <div class="skill">
+                    <img src="./IMG/wa.jpeg" alt="JavaScript">
+                    <h5>+62 85886444968</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('header nav a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const setActiveLink = () => {
+                const scrollPosition = window.scrollY;
+                
+                document.querySelectorAll('section').forEach(section => {
+                    if (scrollPosition >= section.offsetTop - 100) {
+                        const id = section.getAttribute('id');
+                        document.querySelectorAll('header nav a').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', setActiveLink);
+            setActiveLink(); // Set initial active link
+        });
+    </script>
+</body>
+</html>
